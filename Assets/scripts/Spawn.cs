@@ -6,17 +6,14 @@ public class Spawn : MonoBehaviour
 {
     public List<GameObject> vehicles = new List<GameObject>();
     public Vector3 direction = new Vector3(0, 0, 0); //direction to spawn the vehicles
-    public GameObject queue; //queue that will contain cars
     public float startSpeedOfCar = 17;
     public int rotation = 0;
+    public Car lastAddedCar;
     private bool spawn = true;
 
     void Update()
     {
-        if(spawn) 
-        {
-            StartCoroutine(spawnCar(Random.Range(2, 6)));
-        }
+        if(spawn) StartCoroutine(spawnCar(Random.Range(2, 6)));
     }
 
     IEnumerator spawnCar(int timeToWait)
@@ -27,26 +24,24 @@ public class Spawn : MonoBehaviour
 
         GameObject gameObject = Instantiate(vehicles[Random.Range(0, 5)]);
         Car car = gameObject.GetComponent<Car>();
+
+        this.lastAddedCar = car;
         
         car.transform.position = transform.position;
-        car.transform.parent = this.queue.transform;
+        car.transform.parent = transform.parent;
         car.transform.Rotate(direction * 90);
-
-        car.setRoadNr();
 
         car.transform.Translate(this.direction * this.startSpeedOfCar * Time.deltaTime);
 
-        // Car lastCarInQueue = this.queue.transform.GetChild(this.queue.transform.childCount - 1).gameObject.GetComponent<Car>();
-
-        // if(lastCarInQueue != null)
+        // if(this.lastAddedCar != null)
         // {
-        //     lastCarInQueue.setNextCar(car);
-        //     car.setPrevCar(lastCarInQueue);
+        //     this.lastAddedCar.setNextCar(car);
+        //     car.setPrevCar(this.lastAddedCar);
 
-        //     if(!lastCarInQueue.isRoadOpen())
-        //     {
-        //         car.setStop(transform.position);
-        //     }
+        //     // if(!lastCarInQueue.isRoadOpen())
+        //     // {
+        //     //     car.setStop(transform.position);
+        //     // }
         // }
 
         this.spawn = true;
