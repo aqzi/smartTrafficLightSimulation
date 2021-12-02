@@ -8,6 +8,11 @@ TagManager:
   - Road_1
   - Road_2
   - Road_4
+  - Decision_point
+  - End
+  - Prevent_backside_collision
+  - Stop
+  - Detect_gap
   layers:
   - Default
   - TransparentFX

@@ -6,12 +6,12 @@ public class TrafficLight : MonoBehaviour
 {
     private bool trafficLight = false;
 
-    public void updateTrafficLight()
+    public void setLightColor(bool light)
     {
-        this.trafficLight = !this.trafficLight;
+        this.trafficLight = light;
     }
 
-    public bool isTrafficLightActive()
+    public bool isLightGreen()
     {
         return this.trafficLight;
     }
