@@ -117,10 +117,6 @@ public class Car : MonoBehaviour
                 this.turn = Turn.RIGHT;
             }
 
-            // if(road.getRoadNr() == 1) turn = Turn.LEFT;
-
-            // if(road.getRoadNr() == 3) turn = Turn.NONE;
-
             if(this.road.getRoadNr() == 1) print(leftAllowed);
 
             this.outsideCrossroad = false;
