@@ -309,3 +309,34 @@ System memory in use after: 132.9 MB.
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1614.
 Total: 2.259895 ms (FindLiveObjects: 0.258731 ms CreateObjectMapping: 0.054926 ms MarkObjects: 1.874750 ms  DeleteObjects: 0.069827 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 4262.852650 seconds.
+  path: Packages/com.unity.ugui
+  artifactKey: Guid(8f7652e09069a1943278893d4264401e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.ugui using Guid(8f7652e09069a1943278893d4264401e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb55078cc9c7df0752395009fc491c10') in 0.082828 seconds
+  Import took 0.136149 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000569 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.26 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.009 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.25 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1119 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 133.0 MB.
+System memory in use after: 133.1 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1617.
+Total: 1.818375 ms (FindLiveObjects: 0.258707 ms CreateObjectMapping: 0.039568 ms MarkObjects: 1.417536 ms  DeleteObjects: 0.101517 ms)
+
