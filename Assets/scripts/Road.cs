@@ -59,4 +59,11 @@ public class Road : MonoBehaviour
     {
         return this.stopLocation == new Vector3(0, 0, 0);
     }
+
+    public int oppositeRoad(int roadNr)
+    {
+        if(roadNr == 1 || roadNr == 3) return 4 - roadNr;
+        else if(roadNr == 2 || roadNr == 4) return 6 - roadNr;
+        else throw new System.Exception("Invalid roadNr.");
+    }
 }

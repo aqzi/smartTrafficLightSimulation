@@ -45,7 +45,7 @@ public class Car : MonoBehaviour
 
         if(turn == Turn.LEFT && !leftAllowed) 
         {
-            GameEvents.current.goLeft(roadToNotify(this.road.getRoadNr()), this.id);
+            GameEvents.current.goLeft(this.road.oppositeRoad(this.road.getRoadNr()), this.id);
             return;
         }
 
@@ -147,12 +147,5 @@ public class Car : MonoBehaviour
         {
             this.leftAllowed = true;
         }
-    }
-
-    private int roadToNotify(int roadNr)
-    {
-        if(roadNr == 1 || roadNr == 3) return 4 - roadNr;
-        else if(roadNr == 2 || roadNr == 4) return 6 - roadNr;
-        else throw new System.Exception("Invalid roadNr.");
     }
 }
