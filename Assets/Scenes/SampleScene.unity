@@ -401,6 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 277287025}
   - component: {fileID: 277287027}
+  - component: {fileID: 277287026}
   m_Layer: 0
   m_Name: camera_road_2
   m_TagString: MainCamera
@@ -422,6 +423,23 @@ Transform:
   m_Father: {fileID: 1010608571}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 24, y: 30, z: 0}
+--- !u!114 &277287026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277287024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeef564ee89604b1ebb50ac8e7c0d051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCamera: {fileID: 277287027}
+  captureWidth: 1920
+  captureHeight: 1080
+  format: 2
+  generateData: 1
 --- !u!20 &277287027
 Camera:
   m_ObjectHideFlags: 0
@@ -528,6 +546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 281930284}
   - component: {fileID: 281930286}
+  - component: {fileID: 281930285}
   m_Layer: 0
   m_Name: camera_road_3
   m_TagString: MainCamera
@@ -549,6 +568,23 @@ Transform:
   m_Father: {fileID: 280443872}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 24, y: 120, z: 0}
+--- !u!114 &281930285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281930283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeef564ee89604b1ebb50ac8e7c0d051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCamera: {fileID: 281930286}
+  captureWidth: 1920
+  captureHeight: 1080
+  format: 2
+  generateData: 1
 --- !u!20 &281930286
 Camera:
   m_ObjectHideFlags: 0
@@ -693,7 +729,7 @@ GameObject:
   - component: {fileID: 365207696}
   m_Layer: 0
   m_Name: Detect_gap
-  m_TagString: Stop
+  m_TagString: Detect_gap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1935,6 +1971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 939291020}
   - component: {fileID: 939291022}
+  - component: {fileID: 939291021}
   m_Layer: 0
   m_Name: camera_road_1
   m_TagString: MainCamera
@@ -1956,6 +1993,23 @@ Transform:
   m_Father: {fileID: 774120870}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 24, y: -60, z: 0}
+--- !u!114 &939291021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939291019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeef564ee89604b1ebb50ac8e7c0d051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCamera: {fileID: 939291022}
+  captureWidth: 1920
+  captureHeight: 1080
+  format: 2
+  generateData: 1
 --- !u!20 &939291022
 Camera:
   m_ObjectHideFlags: 0
@@ -2318,6 +2372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1286248645}
   - component: {fileID: 1286248647}
+  - component: {fileID: 1286248646}
   m_Layer: 0
   m_Name: camera_road_4
   m_TagString: MainCamera
@@ -2339,6 +2394,23 @@ Transform:
   m_Father: {fileID: 138391704}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 24, y: 210, z: 0}
+--- !u!114 &1286248646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286248644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeef564ee89604b1ebb50ac8e7c0d051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCamera: {fileID: 1286248647}
+  captureWidth: 1920
+  captureHeight: 1080
+  format: 2
+  generateData: 1
 --- !u!20 &1286248647
 Camera:
   m_ObjectHideFlags: 0
