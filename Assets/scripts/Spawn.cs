@@ -8,7 +8,6 @@ public class Spawn : MonoBehaviour
     public Vector3 direction = new Vector3(0, 0, 0); //direction to spawn the vehicles
     public float startSpeedOfCar = 17;
     public int rotation = 0;
-    public Car lastAddedCar;
     private bool spawn = true;
 
     void Update()
@@ -23,26 +22,16 @@ public class Spawn : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         GameObject gameObject = Instantiate(vehicles[Random.Range(0, 5)]);
-        Car car = gameObject.GetComponent<Car>();
-
-        this.lastAddedCar = car;
         
-        car.transform.position = transform.position;
-        car.transform.parent = transform.parent;
-        car.transform.Rotate(direction * 90);
+        //trick to place cars on the ground
+        gameObject.transform.position = new Vector3(transform.position.x, -0.43f, transform.position.z);
+        gameObject.transform.parent = transform.parent;
+        gameObject.transform.Rotate(direction * 90);
 
-        car.transform.Translate(this.direction * this.startSpeedOfCar * Time.deltaTime);
+        float x = this.direction.x * this.startSpeedOfCar * Time.deltaTime;
+        float z = this.direction.z * this.startSpeedOfCar * Time.deltaTime;
 
-        // if(this.lastAddedCar != null)
-        // {
-        //     this.lastAddedCar.setNextCar(car);
-        //     car.setPrevCar(this.lastAddedCar);
-
-        //     // if(!lastCarInQueue.isRoadOpen())
-        //     // {
-        //     //     car.setStop(transform.position);
-        //     // }
-        // }
+        gameObject.transform.Translate(new Vector3(x, 0, z));
 
         this.spawn = true;
     }

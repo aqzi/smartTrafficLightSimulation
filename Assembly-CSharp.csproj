@@ -40,11 +40,11 @@
      <Compile Include="Assets/scripts/GameEvents.cs" />
      <Compile Include="Assets/scripts/TrafficLight.cs" />
      <Compile Include="Assets/scripts/Road.cs" />
+     <Compile Include="Assets/scripts/TakeImage.cs" />
      <Compile Include="Assets/scripts/Spawn.cs" />
      <Compile Include="Assets/scripts/Car.cs" />
      <Compile Include="Assets/scripts/Controller.cs" />
      <Compile Include="Assets/scripts/service/DecisionService.cs" />
-     <Compile Include="Assets/scripts/TakeImage.cs" />
      <None Include="Assets/BrokenVector/LowPolyShaders/Shaders/LowPolyUnlitShader.shader" />
      <None Include="Assets/BrokenVector/LowPolyShaders/Shaders/LowPolyPBRShader.shader" />
     <Reference Include="UnityEngine">

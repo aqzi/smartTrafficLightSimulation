@@ -32,7 +32,7 @@ public class Car : MonoBehaviour
 
     void Start()
     {
-        this.road = transform.parent.GetComponent<Road>();
+        this.road = transform.parent.parent.GetComponent<Road>();
         this.startRotation = transform.localRotation.eulerAngles.y;
 
         if(GameEvents.current != null) GameEvents.current.onGoLeftAllowed += onGoLeftAllowed;
@@ -123,7 +123,7 @@ public class Car : MonoBehaviour
             this.leaveQueue = true;
         }
 
-        if(other.tag == "End") Destroy(this.gameObject);
+        if(other.tag == "End") Destroy(this.gameObject.transform.parent.gameObject);
 
         if(other.tag == "Stop" && !this.road.isOpen()) this.move = false;
 
