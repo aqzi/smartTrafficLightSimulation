@@ -8,6 +8,7 @@ public class Road : MonoBehaviour
     private int roadNr = 0;
     private bool isOpen_ = false;
     private Vector3 stopLocation = new Vector3(0, 0, 0);
+    private int amountOfCars = 0;
 
     void Start()
     {
@@ -65,5 +66,16 @@ public class Road : MonoBehaviour
         if(roadNr == 1 || roadNr == 3) return 4 - roadNr;
         else if(roadNr == 2 || roadNr == 4) return 6 - roadNr;
         else throw new System.Exception("Invalid roadNr.");
+    }
+
+    public void changeAmountOfCars(bool increase)
+    {
+        this.amountOfCars += increase ? 1 : -1;
+        if(this.amountOfCars < 0) this.amountOfCars = 0;
+    }
+
+    public int getAmountOfCars()
+    {
+        return this.amountOfCars;
     }
 }

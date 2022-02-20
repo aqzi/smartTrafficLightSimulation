@@ -33,6 +33,9 @@ public class Spawn : MonoBehaviour
 
         gameObject.transform.Translate(new Vector3(x, 0, z));
 
+        Road road = transform.parent.gameObject.GetComponent<Road>();
+        road.changeAmountOfCars(true);
+        
         this.spawn = true;
     }
 }

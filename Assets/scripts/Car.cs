@@ -65,37 +65,11 @@ public class Car : MonoBehaviour
                 if(this.turn == Turn.RIGHT)
                 {
                     transform.rotation *= Quaternion.AngleAxis((90f / 2.5f) * Time.deltaTime, Vector3.up);
-
-                    if(this.road.getRoadNr() == 4) 
-                    {
-                        if(transform.localRotation.eulerAngles.y < 270) this.turn = Turn.NONE;
-                    } else
-                    {
-                        if(transform.localRotation.eulerAngles.y >= ((startRotation + 90) % 360)) this.turn = Turn.NONE;
-                    }
+                    if(transform.localRotation.eulerAngles.y >= ((startRotation + 90) % 360)) this.turn = Turn.NONE;
                 } else 
                 {
                     transform.rotation *= Quaternion.AngleAxis((90f / 4.2f) * Time.deltaTime, -Vector3.up);
-
-                    if(this.road.getRoadNr() == 1)
-                    {
-                        if(transform.localRotation.eulerAngles.y < 270) 
-                        {
-                            this.turn = Turn.NONE;
-                        }
-                    } else if(this.road.getRoadNr() == 2)
-                    {
-                        if(transform.localRotation.eulerAngles.y > 90)
-                        {
-                            this.turn = Turn.NONE;
-                        }
-                    } else
-                    {
-                        if(transform.localRotation.eulerAngles.y <= (startRotation - 90))
-                        {
-                            this.turn = Turn.NONE;
-                        }
-                    }
+                    if(transform.localRotation.eulerAngles.y < 270) this.turn = Turn.NONE;
                 }
             }
         }
@@ -104,18 +78,20 @@ public class Car : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Decision_point")
         {
-            int value = UnityEngine.Random.Range(1, 100);
+            // int value = UnityEngine.Random.Range(1, 100);
 
-            if(value < 70)
-            {
-                this.turn = Turn.NONE;
-            } else if(value < 85)
-            {
-                this.turn = Turn.LEFT;
-            } else 
-            {
-                this.turn = Turn.RIGHT;
-            }
+            // if(value < 70)
+            // {
+            //     this.turn = Turn.NONE;
+            // } else if(value < 85)
+            // {
+            //     this.turn = Turn.LEFT;
+            // } else 
+            // {
+            //     this.turn = Turn.RIGHT;
+            // }
+
+            this.turn = Turn.RIGHT;
 
             if(this.road.getRoadNr() == 1) print(leftAllowed);
 
@@ -123,7 +99,11 @@ public class Car : MonoBehaviour
             this.leaveQueue = true;
         }
 
-        if(other.tag == "End") Destroy(this.gameObject.transform.parent.gameObject);
+        if(other.tag == "End") 
+        {
+            this.road.changeAmountOfCars(false);
+            Destroy(this.gameObject.transform.parent.gameObject);
+        }
 
         if(other.tag == "Stop" && !this.road.isOpen()) this.move = false;
 

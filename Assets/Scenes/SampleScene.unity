@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 10716712}
   - component: {fileID: 10716713}
   m_Layer: 0
-  m_Name: SpawnLocation
+  m_Name: SpawnLocation1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,16 +167,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicles:
-  - {fileID: 160038, guid: 6346f9198ebfb674baa1a61f29dc6060, type: 3}
-  - {fileID: 129146, guid: 8f0fb4627eb4aed4f9ac1c0ec62fb2ff, type: 3}
-  - {fileID: 162266, guid: 17683e3ffcde346458c0fa5f35c39b9c, type: 3}
-  - {fileID: 193646, guid: cd5a615f62153e041b89bd8f466af5ab, type: 3}
-  - {fileID: 129146, guid: 0ef070b9729d6c640b16bfa755c95ec4, type: 3}
-  - {fileID: 162266, guid: 4306cd5466419674c91dc425c00e18db, type: 3}
+  - {fileID: 1422695490309343999, guid: 791c1d8178aed44ae87962f68f260152, type: 3}
+  - {fileID: 1353722982561147752, guid: db57993b75117467fac8d88e2f8931d6, type: 3}
+  - {fileID: 1125100809505143243, guid: a38cd8222be344924ba744026a37fe7d, type: 3}
+  - {fileID: 428834798714358773, guid: f7876cd1f7343478ebb29f7b361d5361, type: 3}
+  - {fileID: 981240524955656675, guid: 54344e8b830dc4e96bb20739821d7d99, type: 3}
+  - {fileID: 5742137497875243857, guid: 76869df6fd1ca47c6928088afe186aa3, type: 3}
   direction: {x: 0, y: 0, z: 0}
   startSpeedOfCar: 17
   rotation: 0
-  lastAddedCar: {fileID: 0}
 --- !u!1 &45736164 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 98129651f035d4f95ba14ce7e9d64d75, type: 3}
@@ -332,7 +331,7 @@ GameObject:
   - component: {fileID: 246329723}
   - component: {fileID: 246329724}
   m_Layer: 0
-  m_Name: SpawnLocation
+  m_Name: SpawnLocation2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,16 +364,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicles:
-  - {fileID: 116448, guid: 3bbfd36332111ca4583206b5397b1018, type: 3}
-  - {fileID: 129146, guid: 0ef070b9729d6c640b16bfa755c95ec4, type: 3}
-  - {fileID: 160038, guid: 812e3f763be51a143bb1d937f48c31f2, type: 3}
-  - {fileID: 160038, guid: 6346f9198ebfb674baa1a61f29dc6060, type: 3}
-  - {fileID: 162266, guid: f07b089f2dede914a900c8e34e599f38, type: 3}
-  - {fileID: 193646, guid: cd5a615f62153e041b89bd8f466af5ab, type: 3}
+  - {fileID: 1422695490309343999, guid: 791c1d8178aed44ae87962f68f260152, type: 3}
+  - {fileID: 1353722982561147752, guid: db57993b75117467fac8d88e2f8931d6, type: 3}
+  - {fileID: 1125100809505143243, guid: a38cd8222be344924ba744026a37fe7d, type: 3}
+  - {fileID: 428834798714358773, guid: f7876cd1f7343478ebb29f7b361d5361, type: 3}
+  - {fileID: 981240524955656675, guid: 54344e8b830dc4e96bb20739821d7d99, type: 3}
+  - {fileID: 5742137497875243857, guid: 76869df6fd1ca47c6928088afe186aa3, type: 3}
   direction: {x: 0, y: 1, z: 0}
   startSpeedOfCar: 17
   rotation: 90
-  lastAddedCar: {fileID: 0}
 --- !u!1 &261132660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 98129651f035d4f95ba14ce7e9d64d75, type: 3}
@@ -1448,7 +1446,7 @@ GameObject:
   - component: {fileID: 852327706}
   - component: {fileID: 852327707}
   m_Layer: 0
-  m_Name: SpawnLocation
+  m_Name: SpawnLocation4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1481,16 +1479,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicles:
-  - {fileID: 116448, guid: 8e633bea1c2f0644fb922e9bbe329648, type: 3}
-  - {fileID: 160038, guid: 8e6432cafa5803946a9c3011999db1f7, type: 3}
-  - {fileID: 193646, guid: 798591b2838b0844c90eeed933a85d3d, type: 3}
-  - {fileID: 162266, guid: 17683e3ffcde346458c0fa5f35c39b9c, type: 3}
-  - {fileID: 160038, guid: 812e3f763be51a143bb1d937f48c31f2, type: 3}
-  - {fileID: 129146, guid: 9f650378e491fae43bc3f73307b646d7, type: 3}
+  - {fileID: 1422695490309343999, guid: 791c1d8178aed44ae87962f68f260152, type: 3}
+  - {fileID: 1353722982561147752, guid: db57993b75117467fac8d88e2f8931d6, type: 3}
+  - {fileID: 1125100809505143243, guid: a38cd8222be344924ba744026a37fe7d, type: 3}
+  - {fileID: 428834798714358773, guid: f7876cd1f7343478ebb29f7b361d5361, type: 3}
+  - {fileID: 981240524955656675, guid: 54344e8b830dc4e96bb20739821d7d99, type: 3}
+  - {fileID: 5742137497875243857, guid: 76869df6fd1ca47c6928088afe186aa3, type: 3}
   direction: {x: 0, y: -1, z: 0}
   startSpeedOfCar: 17
   rotation: 0
-  lastAddedCar: {fileID: 0}
 --- !u!1001 &881470988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2785,7 +2782,7 @@ GameObject:
   - component: {fileID: 2048373287}
   - component: {fileID: 2048373288}
   m_Layer: 0
-  m_Name: SpawnLocation
+  m_Name: SpawnLocation3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2818,16 +2815,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicles:
-  - {fileID: 193646, guid: 6af8ef207cc6d8746a0713b3c5350d7b, type: 3}
-  - {fileID: 162266, guid: bbbf9fb7447ddf442a86dd23695ed184, type: 3}
-  - {fileID: 162266, guid: 17683e3ffcde346458c0fa5f35c39b9c, type: 3}
-  - {fileID: 116448, guid: 8e633bea1c2f0644fb922e9bbe329648, type: 3}
-  - {fileID: 116448, guid: bd428ed7f76466742916f85241c6bf17, type: 3}
-  - {fileID: 160038, guid: f7cb15c5a7c4bdd498370bd90d1d77bd, type: 3}
+  - {fileID: 1422695490309343999, guid: 791c1d8178aed44ae87962f68f260152, type: 3}
+  - {fileID: 1353722982561147752, guid: db57993b75117467fac8d88e2f8931d6, type: 3}
+  - {fileID: 1125100809505143243, guid: a38cd8222be344924ba744026a37fe7d, type: 3}
+  - {fileID: 428834798714358773, guid: f7876cd1f7343478ebb29f7b361d5361, type: 3}
+  - {fileID: 981240524955656675, guid: 54344e8b830dc4e96bb20739821d7d99, type: 3}
+  - {fileID: 5742137497875243857, guid: 76869df6fd1ca47c6928088afe186aa3, type: 3}
   direction: {x: 0, y: 2, z: 0}
   startSpeedOfCar: 17
   rotation: 0
-  lastAddedCar: {fileID: 0}
 --- !u!1001 &2072073052
 PrefabInstance:
   m_ObjectHideFlags: 0
