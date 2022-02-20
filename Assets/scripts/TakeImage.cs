@@ -9,38 +9,37 @@ using UnityEngine.Rendering;
 
 public class TakeImage : MonoBehaviour
 {
+    public enum Format { RAW, JPG, PNG, PPM, CSV };
+    public enum DatasetType {TRAIN, TEST};
+
     public Camera myCamera;
     public int captureWidth = 1920;
     public int captureHeight = 1080;
-    // configure with raw, jpg, png, or ppm (simple raw format)
-    public enum Format { RAW, JPG, PNG, PPM };
     public Format format = Format.PNG;
-    public bool generateData = true;
-    // folder to write output (defaults to data path)
-    private string outputFolder;
-    // private variables needed for screenshot
+    public bool generateData = true; //it enables/disables data generation
+    public DatasetType datasetType = DatasetType.TRAIN; //Is the data to train a model or to test it?
+    private string outputFolderScreenshot;
+    private string outputFolderDataset;
+
+    //variables below this point are needed for the screenshot
     private Rect rect;
     private RenderTexture renderTexture;
     private Texture2D screenShot;
     private bool isProcessing = false;
+    private Road road;
 
     //Initialize Directory
     public void Start()
     {
-        outputFolder = Application.persistentDataPath + "/Screenshots";
-        if(!Directory.Exists(outputFolder))
-        {
-            Directory.CreateDirectory(outputFolder);
-            Debug.Log("Save Path will be : " + outputFolder);
-        }
-    }
+        road = myCamera.transform.parent.gameObject.GetComponent<Road>();
 
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space) && generateData)
-        {
-            TakeScreenShot();
-        }
+        outputFolderScreenshot = Directory.GetCurrentDirectory() + "/Screenshots/" + datasetType.ToString().ToLower();
+        if(!Directory.Exists(outputFolderScreenshot)) Directory.CreateDirectory(outputFolderScreenshot);
+
+        outputFolderDataset = Directory.GetCurrentDirectory() + "/Dataset";
+        if(!Directory.Exists(outputFolderDataset)) Directory.CreateDirectory(outputFolderDataset);
+
+        InvokeRepeating("TakeScreenShot", 3.0f, 3.0f); //take screenshot each 3 seconds
     }
 
     private string CreateFileName(int width, int height)
@@ -99,7 +98,7 @@ public class TakeImage : MonoBehaviour
             fileData = screenShot.GetRawTextureData();
         }
 
-        string folderPath = Directory.GetCurrentDirectory() + "/Screenshots" + filename;
+        string folderPath = outputFolderScreenshot + filename;
         System.IO.File.WriteAllBytes(folderPath, fileData);
 
         Debug.Log(string.Format("Screenshot Saved {0}, size {1}", filename, fileData.Length));
@@ -116,10 +115,21 @@ public class TakeImage : MonoBehaviour
         if (!isProcessing)
         {
             CaptureScreenshot();
+            updateDataset();
         }
         else
         {
             Debug.Log("Currently Processing");
         }
+    }
+
+    public void updateDataset()
+    {
+        if(road == null) return;
+
+        string folderPath = string.Format("{0}/{1}.{2}", outputFolderDataset, datasetType.ToString().ToLower(), Format.CSV.ToString().ToLower());
+        TextWriter tw = new StreamWriter(folderPath, true);
+        tw.WriteLine(string.Format("{0}, {1}",  road.getRoadNr(), road.getAmountOfCars()));
+        tw.Close();
     }
 }
