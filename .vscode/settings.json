@@ -1,4 +1,4 @@
-﻿{
+{
     "files.exclude":
     {
         "**/.DS_Store":true,
@@ -21,7 +21,7 @@
         "**/*.ico":true,
         "**/*.jpg":true,
         "**/*.jpeg":true,
-        "**/*.png":true,
+        "**/*.png":false,
         "**/*.psd":true,
         "**/*.tga":true,
         "**/*.tif":true,
@@ -51,6 +51,6 @@
         "Obj/":true,
         "ProjectSettings/":true,
         "temp/":true,
-        "Temp/":true
+        "Temp/":true,
     }
 }

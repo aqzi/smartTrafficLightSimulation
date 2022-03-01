@@ -78,22 +78,18 @@ public class Car : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Decision_point")
         {
-            // int value = UnityEngine.Random.Range(1, 100);
+            int value = UnityEngine.Random.Range(1, 100);
 
-            // if(value < 70)
-            // {
-            //     this.turn = Turn.NONE;
-            // } else if(value < 85)
-            // {
-            //     this.turn = Turn.LEFT;
-            // } else 
-            // {
-            //     this.turn = Turn.RIGHT;
-            // }
-
-            this.turn = Turn.RIGHT;
-
-            if(this.road.getRoadNr() == 1) print(leftAllowed);
+            if(value < 70)
+            {
+                this.turn = Turn.NONE;
+            } else if(value < 85)
+            {
+                this.turn = Turn.LEFT;
+            } else 
+            {
+                this.turn = Turn.RIGHT;
+            }
 
             this.outsideCrossroad = false;
             this.leaveQueue = true;
@@ -101,7 +97,6 @@ public class Car : MonoBehaviour
 
         if(other.tag == "End") 
         {
-            this.road.changeAmountOfCars(false);
             Destroy(this.gameObject.transform.parent.gameObject);
         }
 
@@ -118,6 +113,11 @@ public class Car : MonoBehaviour
         if(other.tag == "Prevent_backside_collision") 
         {
             this.collision = false;
+        }
+
+        if(other.tag == "Stop")
+        {
+            this.road.changeAmountOfCars(false);
         }
     }
 
