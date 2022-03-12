@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -19,8 +20,6 @@ public class TakeImage : MonoBehaviour
     public Camera myCamera;
     public int captureWidth = 1920;
     public int captureHeight = 1080;
-    public bool generateData = true; //it enables/disables data generation
-    public bool sendData = true; //should the screenshot be send to the python program?
     public DecisionService decisionService;
     private string outputFolderScreenshot;
     private string outputFolderDataset;
@@ -100,7 +99,7 @@ public class TakeImage : MonoBehaviour
             fileData = screenShot.GetRawTextureData();
         }
 
-        if(generateData)
+        if(Settings.current.generateData)
         {
             string folderPath = outputFolderScreenshot + filename;
             System.IO.File.WriteAllBytes(folderPath, fileData);
@@ -108,7 +107,7 @@ public class TakeImage : MonoBehaviour
             Debug.Log(string.Format("Screenshot Saved {0}, size {1}", filename, fileData.Length));
         }
 
-        if(sendData) decisionService.sendImage(fileData);
+        if(Settings.current.mode == Settings.Mode.SMART) decisionService.sendImage(fileData);
 
         isProcessing = false;
 
@@ -135,7 +134,7 @@ public class TakeImage : MonoBehaviour
 
     public void updateDataset()
     {
-        if(road == null || !generateData) return;
+        if(road == null || !Settings.current.generateData) return;
 
         string folderPath = string.Format("{0}/{1}.{2}", outputFolderDataset, Settings.current.datasetType.ToString().ToLower(), Settings.Format.CSV.ToString().ToLower());
         TextWriter tw = new StreamWriter(folderPath, true);

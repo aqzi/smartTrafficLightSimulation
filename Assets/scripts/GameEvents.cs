@@ -38,4 +38,14 @@ public class GameEvents : MonoBehaviour
             onGoLeftAllowed(roadNr, id);
         }
     }
+
+    public event Action onSaveSimulationToFile;
+    //roadNr is the road where a car is allowed to move left
+    public void saveSimulationToFile()
+    {
+        if(onSaveSimulationToFile != null)
+        {
+            onSaveSimulationToFile();
+        }
+    }
 }

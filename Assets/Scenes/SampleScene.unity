@@ -176,6 +176,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   startSpeedOfCar: 17
   rotation: 0
+  filename: simulation
 --- !u!1 &45736164 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 98129651f035d4f95ba14ce7e9d64d75, type: 3}
@@ -373,6 +374,7 @@ MonoBehaviour:
   direction: {x: 0, y: 1, z: 0}
   startSpeedOfCar: 17
   rotation: 90
+  filename: simulation
 --- !u!1 &261132660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 98129651f035d4f95ba14ce7e9d64d75, type: 3}
@@ -430,8 +432,6 @@ MonoBehaviour:
   myCamera: {fileID: 277287027}
   captureWidth: 1080
   captureHeight: 1080
-  generateData: 1
-  sendData: 0
   decisionService: {fileID: 1675260388}
 --- !u!20 &277287027
 Camera:
@@ -575,8 +575,6 @@ MonoBehaviour:
   myCamera: {fileID: 281930286}
   captureWidth: 1080
   captureHeight: 1080
-  generateData: 1
-  sendData: 0
   decisionService: {fileID: 1675260388}
 --- !u!20 &281930286
 Camera:
@@ -1490,6 +1488,7 @@ MonoBehaviour:
   direction: {x: 0, y: -1, z: 0}
   startSpeedOfCar: 17
   rotation: 0
+  filename: simulation
 --- !u!1001 &881470988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1610,8 +1609,6 @@ MonoBehaviour:
   myCamera: {fileID: 939291022}
   captureWidth: 1080
   captureHeight: 1080
-  generateData: 1
-  sendData: 0
   decisionService: {fileID: 1675260388}
 --- !u!20 &939291022
 Camera:
@@ -1844,7 +1841,11 @@ MonoBehaviour:
   generateData: 1
   path: /Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/deepProbLog/src/deepproblog/examples/TrafficLightController
   format: 1
-  datasetType: 1
+  datasetType: 2
+  mode: 0
+  time: 15
+  saveSimulationToFile: 0
+  loadSimulationFromFile: 1
 --- !u!4 &999788639
 Transform:
   m_ObjectHideFlags: 0
@@ -1975,8 +1976,6 @@ MonoBehaviour:
   myCamera: {fileID: 1286248647}
   captureWidth: 1080
   captureHeight: 1080
-  generateData: 1
-  sendData: 0
   decisionService: {fileID: 1675260388}
 --- !u!20 &1286248647
 Camera:
@@ -2875,6 +2874,7 @@ MonoBehaviour:
   direction: {x: 0, y: 2, z: 0}
   startSpeedOfCar: 17
   rotation: 0
+  filename: simulation
 --- !u!1001 &2072073052
 PrefabInstance:
   m_ObjectHideFlags: 0
