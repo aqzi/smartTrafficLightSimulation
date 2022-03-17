@@ -118,6 +118,7 @@ public class Car : MonoBehaviour
         if(other.tag == "Stop")
         {
             this.road.changeAmountOfCars(false);
+            this.road.addLeavingCar();
         }
     }
 

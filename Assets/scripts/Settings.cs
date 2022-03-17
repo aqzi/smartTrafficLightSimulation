@@ -49,8 +49,9 @@ public class Settings : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         GameEvents.current.saveSimulationToFile();
+        GameEvents.current.leavingCarsRequest();
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1); //wait a sec until events are finished
         
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;

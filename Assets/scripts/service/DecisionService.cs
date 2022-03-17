@@ -86,8 +86,8 @@ public class DecisionService : MonoBehaviour
 					Value = 7
 				}); 				
 				// Write byte array to socketConnection stream.                 
-				//stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);  
-				stream.Write(BitConverter.GetBytes(1), 0, BitConverter.GetBytes(1).Length);                 
+				stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);  
+				//stream.Write(BitConverter.GetBytes(1), 0, BitConverter.GetBytes(1).Length);                 
 				Debug.Log("Client sent his message - should be received by server");             
 			}         
 		} 		

@@ -47,6 +47,8 @@
      <Compile Include="Assets/scripts/Car.cs" />
      <Compile Include="Assets/scripts/Controller.cs" />
      <Compile Include="Assets/scripts/service/DecisionService.cs" />
+     <Compile Include="Assets/scripts/Results.cs" />
+     <None Include="Assets/Results/leavingCars.txt" />
      <None Include="Assets/BrokenVector/LowPolyShaders/Shaders/LowPolyUnlitShader.shader" />
      <None Include="Assets/BrokenVector/LowPolyShaders/Shaders/LowPolyPBRShader.shader" />
      <None Include="Assets/Simulations/simulation.txt" />

@@ -48,4 +48,24 @@ public class GameEvents : MonoBehaviour
             onSaveSimulationToFile();
         }
     }
+
+    public event Action onLeavingCarsRequest;
+    //roadNr is the road where a car is allowed to move left
+    public void leavingCarsRequest()
+    {
+        if(onLeavingCarsRequest != null)
+        {
+            onLeavingCarsRequest();
+        }
+    }
+
+    public event Action<string> onLeavingCarsSend;
+    //roadNr is the road where a car is allowed to move left
+    public void leavingCarsSend(string leavingCars)
+    {
+        if(onLeavingCarsSend != null)
+        {
+            onLeavingCarsSend(leavingCars);
+        }
+    }
 }

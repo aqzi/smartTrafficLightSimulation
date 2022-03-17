@@ -321,6 +321,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7273926157692253545, guid: 4563cd8ca3d35de49ab2f8b59f8f2f0e, type: 3}
   m_PrefabInstance: {fileID: 149441690}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &241728568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 241728569}
+  - component: {fileID: 241728570}
+  m_Layer: 0
+  m_Name: Results
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &241728569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241728568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -290.42148, y: -354.0568, z: -235.00455}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &241728570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241728568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af419d464979c42f8a23fed3bef97637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leavingCarsFilename: leavingCars
 --- !u!1 &246329722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,14 +1882,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb98141c7aeb4769b9ddef735705ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateData: 1
+  generateData: 0
   path: /Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/deepProbLog/src/deepproblog/examples/TrafficLightController
   format: 1
   datasetType: 2
   mode: 0
-  time: 15
+  time: 60
   saveSimulationToFile: 0
-  loadSimulationFromFile: 1
+  loadSimulationFromFile: 0
 --- !u!4 &999788639
 Transform:
   m_ObjectHideFlags: 0
