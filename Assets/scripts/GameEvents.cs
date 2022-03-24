@@ -49,23 +49,53 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-    public event Action onLeavingCarsRequest;
+    public event Action onResultsRequest;
     //roadNr is the road where a car is allowed to move left
-    public void leavingCarsRequest()
+    public void resultsRequest()
     {
-        if(onLeavingCarsRequest != null)
+        if(onResultsRequest != null)
         {
-            onLeavingCarsRequest();
+            onResultsRequest();
         }
     }
 
-    public event Action<string> onLeavingCarsSend;
+    public event Action<string, int, string> onResultsReceive;
     //roadNr is the road where a car is allowed to move left
-    public void leavingCarsSend(string leavingCars)
+    public void resultsReceive(string leavingCars, int timesStopped, string carCounter)
     {
-        if(onLeavingCarsSend != null)
+        if(onResultsReceive != null)
         {
-            onLeavingCarsSend(leavingCars);
+            onResultsReceive(leavingCars, timesStopped, carCounter);
+        }
+    }
+
+    public event Action onResultsRequestType2;
+    //roadNr is the road where a car is allowed to move left
+    public void resultsRequestType2()
+    {
+        if(onResultsRequestType2 != null)
+        {
+            onResultsRequestType2();
+        }
+    }
+
+    public event Action<string> onResultsReceiveType2;
+    //roadNr is the road where a car is allowed to move left
+    public void resultsReceiveType2(string decisions)
+    {
+        if(onResultsReceiveType2 != null)
+        {
+            onResultsReceiveType2(decisions);
+        }
+    }
+
+    public event Action<string> onDecision;
+    //roadNr is the road where a car is allowed to move left
+    public void decision(string msg)
+    {
+        if(onDecision != null)
+        {
+            onDecision(msg);
         }
     }
 }

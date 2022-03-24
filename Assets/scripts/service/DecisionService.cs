@@ -1,127 +1,141 @@
-using System;
-using System.IO;
-using System.Net.Sockets;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Net.Sockets;
+using System;
+using System.Threading.Tasks;
+using Google.Protobuf;
+using Proto = SmartTrafficLight.Protobuf.Traffic;
 
 public class DecisionService : MonoBehaviour
 {
-	[Serializable]
-	class TestObj
-	{
-		public string Test { get; set; }
-		public int Value { get; set; }
+	private TCP tcp;
+
+    public Texture2D img;
+    public List<byte[]> imgs = new List<byte[]>(); //4 images to send each time
+    private int count = 0; //keep count of filled places
+    private bool configure = true;
+
+
+    // Start is called before the first frame update
+    public async Task Start()
+    {
+        this.resetImgs();
+
+		this.tcp = new TCP();
+		await tcp.ConnectAsync("127.0.0.1", 5050);
+
+		await Task.Delay(TimeSpan.FromSeconds(1));
+
+        this.configure = false;
+
+        if(GameEvents.current != null) 
+        {
+            GameEvents.current.onResultsRequestType2 += onResultsRequestType2;
+        }
 	}
 
-    private TcpClient socketConnection;
-    private Thread clientReceiveThread;
-    
-    void Start()
+    public void Update()
     {
-        ConnectToTcpServer();
+        if(!configure)
+        {
+            if(this.count == 4)
+            {
+                var request = new Proto.ProcessImageRequest
+                {
+                    Image1 = Google.Protobuf.ByteString.CopyFrom(this.imgs[0]),
+                    Image2 = Google.Protobuf.ByteString.CopyFrom(this.imgs[1]),
+                    Image3 = Google.Protobuf.ByteString.CopyFrom(this.imgs[2]),
+                    Image4 = Google.Protobuf.ByteString.CopyFrom(this.imgs[3])
+                };
+                
+                tcp.Send(request.ToByteArray(), Convert.ToByte(1));
+                tcp.Read();
+
+                this.resetImgs();
+            }
+        }
     }
 
-    void Update()
+    public void addImage(byte[] img, int roadNr)
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {             
-			SendMessage();         
-		}
+        this.imgs[roadNr-1] = img;
+        this.count++;
     }
 
-    void OnApplicationQuit()
+    private void resetImgs()
     {
-        if(clientReceiveThread != null) clientReceiveThread.Abort();
-        if(socketConnection != null) socketConnection.Close();
+        this.imgs = new List<byte[]>()
+        {
+            new Byte[64],
+            new Byte[64],
+            new Byte[64],
+            new Byte[64]
+        };
+
+        this.count = 0;
     }
 
-    private void ConnectToTcpServer () { 		
-		try {  			
-			clientReceiveThread = new Thread (new ThreadStart(ListenForData)); 			
-			clientReceiveThread.IsBackground = true; 			
-			clientReceiveThread.Start();  
-		} 		
-		catch (Exception e) { 			
-			Debug.Log("On client connect exception " + e); 		
-		} 	
-	}
+    public void onResultsRequestType2()
+    {
+        GameEvents.current.resultsReceiveType2(this.tcp.getDecisions());
+    }
 
-    private void ListenForData() { 		
-		try { 			
-			socketConnection = new TcpClient("127.0.0.1", 65432);  			
-			Byte[] bytes = new Byte[1024];             
-			while (true) { 				
-				// Get a stream object for reading 				
-				using (NetworkStream stream = socketConnection.GetStream()) { 					
-					int length; 					
-					// Read incomming stream into byte arrary. 					
-					while ((length = stream.Read(bytes, 0, bytes.Length)) != 0) { 						
-						var incommingData = new byte[length]; 						
-						Array.Copy(bytes, 0, incommingData, 0, length); 						
-						// Convert byte array to string message. 						
-						string serverMessage = Encoding.ASCII.GetString(incommingData); 						
-						Debug.Log("server message received as: " + serverMessage); 					
-					} 				
-				} 			
-			}       
-		}         
-		catch (SocketException socketException) {             
-			Debug.Log("Socket exception: " + socketException);         
-		}     
-	}
+	public class TCP
+    {
+        private const int HEADER_LENGTH_LENGTH = 4;
+        private const int HEADER_TYPE_LENGTH = 1;
+        private TcpClient socket;
+        private NetworkStream stream;
+        private byte[] dataBuffer;
+        private List<string> decisions = new List<string>();
 
-    private void SendMessage() {         
-		if (socketConnection == null) {             
-			return;         
-		}  		
-		try { 			
-			// Get a stream object for writing. 			
-			NetworkStream stream = socketConnection.GetStream(); 			
-			if (stream.CanWrite) {                 
-				string clientMessage = "This is a message from one of your clients."; 				
-				// Convert string message to byte array.                 
-				byte[] clientMessageAsByteArray = ObjectToByteArray(new TestObj {
-					Test = "hey",
-					Value = 7
-				}); 				
-				// Write byte array to socketConnection stream.                 
-				stream.Write(clientMessageAsByteArray, 0, clientMessageAsByteArray.Length);  
-				//stream.Write(BitConverter.GetBytes(1), 0, BitConverter.GetBytes(1).Length);                 
-				Debug.Log("Client sent his message - should be received by server");             
-			}         
-		} 		
-		catch (SocketException socketException) {             
-			Debug.Log("Socket exception: " + socketException);         
-		}     
-	}
+        public async Task ConnectAsync(string serverIpAddress, int serverPort)
+        {
+            socket = new TcpClient();
+            await socket.ConnectAsync(serverIpAddress, serverPort);
 
-	public void sendImage(byte[] image)
-	{
-		if (socketConnection == null) {             
-			return;         
-		}  		
-		try { 			
-			// Get a stream object for writing. 			
-			NetworkStream stream = socketConnection.GetStream(); 			
-			if (stream.CanWrite) {                               
-				stream.Write(image, 0, image.Length);                        
-			}
-		} 		
-		catch (SocketException socketException) {             
-			Debug.Log("Socket exception: " + socketException);         
-		}  
-	}
+            stream = socket.GetStream();
+        }
 
-	private byte[] ObjectToByteArray(object obj)
-	{
-		if(obj == null)
-			return null;
-		BinaryFormatter bf = new BinaryFormatter();
-		using (MemoryStream ms = new MemoryStream())
-		{
-			bf.Serialize(ms, obj);
-			return ms.ToArray();
-		}
-	}
+        public void Send(byte[] message, byte type)
+        {
+            if (stream.CanWrite)
+            {
+                byte[] sendBuffer = new byte[message.Length + HEADER_LENGTH_LENGTH + HEADER_TYPE_LENGTH];
+                byte[] msgLength = BitConverter.GetBytes(message.Length);
+                
+                msgLength.CopyTo(sendBuffer, 0);
+                sendBuffer[HEADER_LENGTH_LENGTH] = type;
+                message.CopyTo(sendBuffer, HEADER_LENGTH_LENGTH + HEADER_TYPE_LENGTH);
+                stream.Write(sendBuffer, 0, sendBuffer.Length);
+            }
+        }
+
+        public void Read()
+        {
+            var msgLengthBuffer = new byte[HEADER_LENGTH_LENGTH];
+            
+            stream.Read(msgLengthBuffer, 0, HEADER_LENGTH_LENGTH);
+            Array.Reverse(msgLengthBuffer);
+            int msgLength = BitConverter.ToInt32(msgLengthBuffer, 0);
+
+            int msgType = stream.ReadByte();
+
+            var msgBuffer = new byte[msgLength];
+            stream.Read(msgBuffer, 0, msgLength);
+
+            if(msgType == 2)
+            {
+                var response = Proto.ProcessImageResponse.Parser.ParseFrom(msgBuffer);
+                Debug.Log(response.Message);
+                this.decisions.Add(response.Message);
+                if(GameEvents.current != null) GameEvents.current.decision(response.Message);
+            }
+        }
+
+        public string getDecisions()
+        {
+            return string.Join(", ", this.decisions.ToArray());
+        }
+    }
 }

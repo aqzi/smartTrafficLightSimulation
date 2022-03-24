@@ -107,7 +107,7 @@ public class TakeImage : MonoBehaviour
             Debug.Log(string.Format("Screenshot Saved {0}, size {1}", filename, fileData.Length));
         }
 
-        if(Settings.current.mode == Settings.Mode.SMART) decisionService.sendImage(fileData);
+        if(Settings.current.mode == Settings.Mode.SMART) decisionService.addImage(fileData, this.road.getRoadNr());
 
         isProcessing = false;
 

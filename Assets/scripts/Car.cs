@@ -25,6 +25,8 @@ public class Car : MonoBehaviour
     private bool move = true;
     private bool leftAllowed = false;
     private bool collision = false;
+    private Vector3 prevPos = new Vector3(0, 0, 0); //used to check if car has stopped
+    private bool stopped = false;
 
     private void Awake() {
         this.id = Guid.NewGuid();
@@ -73,9 +75,20 @@ public class Car : MonoBehaviour
                 }
             }
         }
+
+        if((this.prevPos == transform.position) && !this.stopped)
+        {
+            this.stopped = true;
+            this.road.increaseTimesStopped();
+        }
+
+        if((this.prevPos != transform.position) && this.stopped) this.stopped = false;
+
+        this.prevPos = transform.position;
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other) 
+    {
         if(other.tag == "Decision_point")
         {
             int value = UnityEngine.Random.Range(1, 100);
@@ -100,16 +113,23 @@ public class Car : MonoBehaviour
             Destroy(this.gameObject.transform.parent.gameObject);
         }
 
-        if(other.tag == "Stop" && !this.road.isOpen()) this.move = false;
+        if(other.tag == "Stop" && !this.road.isOpen()) 
+        {
+            this.move = false;
+            this.road.increaseTimesStopped();
+        }
 
         if(other.tag == "Prevent_backside_collision") 
         {
             this.collision = true;
             this.move = false;
+
+            if(!this.road.isOpen()) this.road.increaseTimesStopped();
         }
     }
 
-    private void OnTriggerExit(Collider other) {
+    private void OnTriggerExit(Collider other) 
+    {
         if(other.tag == "Prevent_backside_collision") 
         {
             this.collision = false;

@@ -45,13 +45,20 @@
      <Compile Include="Assets/scripts/TakeImage.cs" />
      <Compile Include="Assets/scripts/Spawn.cs" />
      <Compile Include="Assets/scripts/Car.cs" />
+     <Compile Include="Assets/scripts/Results.cs" />
      <Compile Include="Assets/scripts/Controller.cs" />
      <Compile Include="Assets/scripts/service/DecisionService.cs" />
-     <Compile Include="Assets/scripts/Results.cs" />
-     <None Include="Assets/Results/leavingCars.txt" />
+     <None Include="Assets/Results/results3_smart.txt" />
+     <None Include="Assets/Results/results_normal.txt" />
+     <None Include="Assets/Results/results2_smart.txt" />
+     <None Include="Assets/Simulations/simulation3.txt" />
      <None Include="Assets/BrokenVector/LowPolyShaders/Shaders/LowPolyUnlitShader.shader" />
      <None Include="Assets/BrokenVector/LowPolyShaders/Shaders/LowPolyPBRShader.shader" />
+     <None Include="Assets/Results/results2_normal.txt" />
      <None Include="Assets/Simulations/simulation.txt" />
+     <None Include="Assets/Results/results3_normal.txt" />
+     <None Include="Assets/Results/results_smart.txt" />
+     <None Include="Assets/Simulations/simulation2.txt" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.3f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -273,6 +280,18 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.3f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf">
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Assets/Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Assets/System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Assets/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartTrafficLight.Protobuf">
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Assets/SmartTrafficLight.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.3f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -626,25 +645,25 @@
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.3f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>/Users/ziedinsa/Documents/unity/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>/Users/ziedinsa/Documents/unity/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>/Users/ziedinsa/Documents/unity/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>/Users/ziedinsa/Documents/unity/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>/Users/ziedinsa/Documents/unity/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>/Users/ziedinsa/Documents/unity/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>/Users/ziedinsa/Documents/unity/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>/Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/smartTrafficLightSimulation/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

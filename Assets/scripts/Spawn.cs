@@ -10,22 +10,27 @@ public class Spawn : MonoBehaviour
     public Vector3 direction = new Vector3(0, 0, 0); //direction to spawn the vehicles
     public float startSpeedOfCar = 17;
     public int rotation = 0;
-    public string filename = "simulation";
     private bool spawn = true;
     private List<string> history = new List<string>();
     private int count = 0;
     private string path = "Assets/Simulations/";
+    private int max  = 25;
+    private int min = 5;
 
     void Start()
     {
-        this.path = string.Format("{0}{1}.txt", this.path, this.filename);
-
-        if(GameEvents.current)
+        if(GameEvents.current != null)
         {
             GameEvents.current.onSaveSimulationToFile += onSaveSimulationToFile;
         }
 
-        if(Settings.current.saveSimulationToFile) FileUtil.DeleteFileOrDirectory(this.path);
+        if(Settings.current != null)
+        {
+            this.path = string.Format("{0}{1}.txt", this.path, Settings.current.simulationFilename);
+            if(Settings.current.saveSimulationToFile) FileUtil.DeleteFileOrDirectory(this.path);
+            this.max = Settings.current.max;
+            this.min = Settings.current.min;
+        }
 
         this.loadSimulationFromFile();
     }
@@ -34,7 +39,9 @@ public class Spawn : MonoBehaviour
     {
         if(!Settings.current.loadSimulationFromFile)
         {
-            if(spawn) StartCoroutine(spawnCar(Random.Range(2, 6)));
+            int value = Random.Range(this.min, this.max);
+            if(Settings.current.generateData && spawn) StartCoroutine(spawnCar(value));
+            else if(spawn) StartCoroutine(spawnCar(value));
         } else
         {
             if(spawn && this.count < this.history.Count)

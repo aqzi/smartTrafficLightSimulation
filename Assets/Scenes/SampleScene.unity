@@ -364,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af419d464979c42f8a23fed3bef97637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leavingCarsFilename: leavingCars
 --- !u!1 &246329722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,13 +1882,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generateData: 0
-  path: /Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/deepProbLog/src/deepproblog/examples/TrafficLightController
+  path: /Users/ziedinsa/Documents/unif/jaar5Semester1/capitaSelecta/SmartTrafficLight/SmartTrafficLight.Server/deepproblog/src/deepproblog/examples/TrafficLightController
   format: 1
   datasetType: 2
   mode: 0
-  time: 60
+  time: 180
   saveSimulationToFile: 0
-  loadSimulationFromFile: 0
+  loadSimulationFromFile: 1
+  counter: 0
 --- !u!4 &999788639
 Transform:
   m_ObjectHideFlags: 0
@@ -2624,6 +2624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0671ff6cb85b4453b223d9378dfa7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  img: {fileID: 0}
 --- !u!4 &1675260389
 Transform:
   m_ObjectHideFlags: 0

@@ -11,6 +11,9 @@ public class Road : MonoBehaviour
     private Vector3 stopLocation = new Vector3(0, 0, 0);
     private int amountOfCars = 0;
     private List<string> leavingCars = new List<string>(); //keep count of amount of cars passing the crossroad
+    private int timesStopped = 0;
+    private List<Tuple<bool, float>> carCounter = new List<Tuple<bool, float>>(); //save spawn moments
+    private float timer = 0.0f;
 
     void Start()
     {
@@ -20,13 +23,13 @@ public class Road : MonoBehaviour
         if(GameEvents.current != null) 
         {
             GameEvents.current.onActiveTrafficLight += onActiveTrafficLight;
-            GameEvents.current.onLeavingCarsRequest += onLeavingCarsRequest;
+            GameEvents.current.onResultsRequest += onResultsRequest;
         }
     }
 
     void Update()
     {
-        
+        this.timer += Time.deltaTime;
     }
 
     private void onActiveTrafficLight(List<int> openRoads)
@@ -77,6 +80,7 @@ public class Road : MonoBehaviour
     public void changeAmountOfCars(bool increase)
     {
         this.amountOfCars += increase ? 1 : -1;
+        this.changeCarCounter(increase);
         if(this.amountOfCars < 0) this.amountOfCars = 0;
     }
 
@@ -85,15 +89,50 @@ public class Road : MonoBehaviour
         return this.amountOfCars;
     }
 
-    public void addLeavingCar() {
+    public void addLeavingCar() 
+    {
         this.leavingCars.Add(string.Format("{0}:{1}:{2}", DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second));
     }
 
-    public string getLeavingCars() {
+    public string getLeavingCars() 
+    {
         return System.String.Join(", ", this.leavingCars.ToArray());
     }
 
-    public void onLeavingCarsRequest() {
-        GameEvents.current.leavingCarsSend(this.getLeavingCars());
+    public void increaseTimesStopped()
+    {
+        this.timesStopped++;
+    }
+
+    public void decreaseTimesStopped()
+    {
+        this.timesStopped--;
+    }
+
+    public int getTimesStopped()
+    {
+        return this.timesStopped;
+    }
+
+    public void onResultsRequest() 
+    {
+        GameEvents.current.resultsReceive(this.getLeavingCars(), this.getTimesStopped(), this.getCarCounter());
+    }
+
+    public void changeCarCounter(bool increase)
+    {
+        this.carCounter.Add(new Tuple<bool, float>(increase, this.timer));
+    }
+
+    public string getCarCounter()
+    {
+        string returnVal = "";
+
+        foreach(Tuple<bool, float> item in this.carCounter)
+        {
+            returnVal += item.ToString();
+        }
+
+        return this.getRoadNr() + ": " + returnVal;
     }
 }
