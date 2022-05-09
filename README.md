@@ -1,5 +1,4 @@
 # smartTrafficLightSimulation
-
 A simulation that controls traffic lights to optimize the traffic flow.
 
 ### Info
